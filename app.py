@@ -34,18 +34,15 @@ def get_user_by_id(user_id):
     else:
         return None
 
-
 # Callback to promptly reload the user object
 @login_manager.user_loader
 def load_user(user_id):
     return get_user_by_id(user_id)
 
-
 # Routes
 @app.route('/')
 def index():
     return render_template('index.html')
-
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -63,7 +60,7 @@ def register():
         elif not password == confirm_password:
             flash("Password and confirm password is doesn't match ")
         else:
-            # connect to database
+            # connect to database setup
             conn = sqlite3.connect('database.db')
             c = conn.cursor()
             c.execute("INSERT INTO users (username, password) VALUES (?, ?)", (username, password))
