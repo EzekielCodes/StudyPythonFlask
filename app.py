@@ -108,7 +108,6 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
-
 @app.route('/dashboard', methods=['GET', 'POST'])
 #@login_required
 def dashboard():
@@ -134,11 +133,10 @@ def dashboard():
 
     return render_template('dashboard.html')
 
-
 @app.route('/dashboard/<int:website_id>/delete', methods=['POST'])
 #@login_required
 def delete(website_id):
-    # TODO 4: Implement the function for deleting websites from user profiles.
+    # TODO 4: Implement the function for deleting websites from user profiles accordingly.
     conn = sqlite3.connect('database.db', timeout=60)
     c = conn.cursor()
     c.execute('DELETE FROM users WHERE id = ?', (website_id,))
