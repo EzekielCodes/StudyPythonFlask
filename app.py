@@ -10,13 +10,11 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 app.app_context().push()
 
-
 class User(UserMixin):
     def __init__(self, id, username, password):
         self.id = id
         self.username = username
         self.password = password
-
 
 class Website:
     def __init__(self, id, user_id, name, url):
@@ -24,7 +22,6 @@ class Website:
         self.user_id = user_id
         self.url = url
         self.name = name
-
 
 def get_user_by_id(user_id):
     conn = sqlite3.connect('database.db')
@@ -38,7 +35,7 @@ def get_user_by_id(user_id):
         return None
 
 
-# Callback to reload the user object
+# Callback to promptly reload the user object
 @login_manager.user_loader
 def load_user(user_id):
     return get_user_by_id(user_id)
