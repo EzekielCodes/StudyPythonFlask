@@ -112,7 +112,7 @@ def logout():
 @app.route('/dashboard', methods=['GET', 'POST'])
 #@login_required
 def dashboard():
-    # TODO 3: Implement the function for adding websites to user profiles.
+    # TODO 3: Execute the function for adding websites to user profiles.
     if request.method == 'POST':
         website_name = request.form['website_name']
         website_url = request.form['website_url']
